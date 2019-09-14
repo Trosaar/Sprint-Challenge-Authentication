@@ -7,15 +7,15 @@ module.exports = {
 }
 
 function add(user) {
-	return db('auth').isert(user).then(ids => {
+	return db('users').insert(user).then(ids => {
 		return findById(ids[0])
 	})
 }
 
 function findById(id) {
-	return db('auth').where({ id }).first();
+	return db('users').where({ id }).first();
 }
 
 function findAll() {
-	return db('auth').select('id', 'username');
+	return db('users')
 }
